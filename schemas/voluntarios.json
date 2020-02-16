@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "https://stretpet.github.io/model/schemas/voluntarios",
+  "title": "Entidade Voluntário no Firestore",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": ""
+    },
+    "version": {
+      "$ref": "#/definitions/fileVersion",
+      "description": ""
+    },
+    "email": {
+      "type": "string"
+    },
+    "idade": {
+      "type": "number"
+    },
+    "sobrenome": {
+      "type": "string"
+    },
+    "nameToSearch": {
+      "type": "string"
+    },
+    "uid": {
+      "$ref": "#/definitions/uid"
+    },
+    "nome": {
+      "type": "#/definitions/name"
+    },
+    "avatar": {
+      "$ref": "#/definitions/url"
+    },
+    "papeis": {
+      "type": "array",
+      "description": "Lista dos papeis que o voluntário desempenha no projeto.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/collectionPattern"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "version"
+  ],
+  "definitions": {
+    "fileVserion": {
+      "type": "integer",
+      "description": "File format version",
+      "minimum": 1
+    },
+    "colletionPath": {
+      "type": "string",
+      "description": "Path para alguma coleção no Firebase, ou na pasta de referência no projeto",
+      "pattern": ""
+    },
+    "url": {
+      "type": "string",
+      "description": "Uma URL para um site válido na internet, conforme o regexp abaixo",
+      "pattern": "^[a-z]{2}(-[a-zA-Z]{2,})?$"
+    },
+    "name": {
+      "type": "string",
+      "anyOf": [
+        {
+          "minLength": 1,
+          "maxLength": 255
+        }
+      ]
+    }
+  }
+}
