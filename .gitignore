@@ -102,3 +102,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+schemas/schema-example.json
